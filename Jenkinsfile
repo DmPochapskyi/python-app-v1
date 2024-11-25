@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/DmPochapskyi/python-docker-app.git'
+                git branch: 'main', url: 'https://github.com/DmPochapskyi/python-app-v1.git'
             }
         }
         stage('Build Docker Image') {
