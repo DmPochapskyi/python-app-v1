@@ -16,6 +16,7 @@ services:
     image: prom/prometheus:latest
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./rules.yml:/etc/prometheus/rules.yml
     ports:
       - "9090:9090"
     networks:
@@ -38,6 +39,17 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /var/lib/docker/:/var/lib/docker:ro
 
+  alertmanager:
+    image: prom/alertmanager
+    container_name: python-docker-app_alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+    networks:
+      - monitoring
+
+
   grafana:
     image: grafana/grafana:latest
     ports:
@@ -47,9 +59,10 @@ services:
     networks:
       - monitoring
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SECURITY_ADMIN_USER=DmPochapskyi
+      - GF_SECURITY_ADMIN_PASSWORD=Antilopagnu123!
+      - GF_USERS_ALLOW_SIGN_UP=true
+
 
 volumes:
   grafana-data:
