@@ -49,7 +49,7 @@ services:
     networks:
       - monitoring
     environment:
-        - SENDGRID_API_KEY=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
+      - SENDGRID_API_KEY=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
 
   grafana:
     image: grafana/grafana:latest
